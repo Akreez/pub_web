@@ -1,0 +1,26 @@
+<p>drink works!</p>
+
+<table class="table table-striped table-info">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ital</th>
+            <th>Mennyiség</th>
+            <th>Ár</th>
+            <th>Típus</th>
+            <th>Csomagolás</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(drink of drinks; track drink.id){
+            <tr>
+                <td>{{drink.id}}</td>
+                <td>{{drink.drink}}</td>
+                <td>{{drink.amount}}</td>
+                <td>{{drink.price}}</td>
+                <td>{{drink.type_id}}</td>
+                <td>{{drink.package_id}}</td>
+            </tr>
+        }
+    </tbody>
+</table>
