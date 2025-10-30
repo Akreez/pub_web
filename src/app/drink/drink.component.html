@@ -1,4 +1,9 @@
-<p>drink works!</p>
+<h2>Italok</h2>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#operationModal">
+  Hozzáadás
+</button>
 
 <table class="table table-striped table-info">
     <thead>
@@ -18,9 +23,65 @@
                 <td>{{drink.drink}}</td>
                 <td>{{drink.amount}}</td>
                 <td>{{drink.price}}</td>
-                <td>{{drink.type_id}}</td>
-                <td>{{drink.package_id}}</td>
+                <td>{{drink.type}}</td>
+                <td>{{drink.package}}</td>
             </tr>
         }
     </tbody>
 </table>
+
+<!-- Modal -->
+<div class="modal fade" id="operationModal" tabindex="-1" aria-labelledby="operationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="operationModalLabel">
+            @if (addMode) {
+                Hozzáadás
+            } @else {
+                Módosítás
+            }
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="drinkForm" (ngSubmit)="save()" id="drinkForm">
+            @if (!addMode) {
+                <div class="input mb-3">
+                    <label for="id" class="form-label">Id</label>
+                    <input type="text" formControlName="id" id="id" class="form-control" readonly>
+                </div>
+            }
+            <!-- <div class="input mb-3" >
+                <label for="id" class="form-label">Id</label>
+                <input type="text" formControlName="id" id="id" class="form-control" readonly>
+            </div> -->
+            <div class="input mb-3">
+                <label for="drink" class="form-label">Ital</label>
+                <input type="text" formControlName="drink" id="drink" class="form-control">
+            </div>
+            <div class="input mb-3">
+                <label for="amount" class="form-label">Mennyiség</label>
+                <input type="text" formControlName="amount" id="amount" class="form-control">
+            </div>
+            <div class="input mb-3">
+                <label for="price" class="form-label">Ár</label>
+                <input type="text" formControlName="price" id="price" class="form-control">
+            </div>
+            <div class="input mb-3">
+                <label for="type" class="form-label">Típus</label>
+                <input type="text" formControlName="type" id="type" class="form-control">
+            </div>
+            <div class="input mb-3">
+                <label for="package" class="form-label">Csomagolás</label>
+                <input type="text" formControlName="package" id="package" class="form-control">
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezárás</button>
+        <button type="submit" class="btn btn-primary" form="drinkForm">Mentés</button>
+      </div>
+    </div>
+  </div>
+</div>
