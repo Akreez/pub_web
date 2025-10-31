@@ -1,7 +1,7 @@
 <h2>Italok</h2>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#operationModal">
+<button type="button" id="addButton" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#operationModal">
   Hozzáadás
 </button>
 
@@ -14,6 +14,7 @@
             <th>Ár</th>
             <th>Típus</th>
             <th>Csomagolás</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +26,10 @@
                 <td>{{drink.price}}</td>
                 <td>{{drink.type}}</td>
                 <td>{{drink.package}}</td>
+                <td>
+                    <button class="btn btn-secondary me-2 mb-2 mt-2">Módosítás</button>
+                    <button (click)="delete(drink.id)" class="btn btn-danger mb-2 mt-2">X</button>
+                </td>
             </tr>
         }
     </tbody>
@@ -101,7 +106,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button (click)="close()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezárás</button>
+        <button (click)="reset()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezárás</button>
         <button type="submit" class="btn btn-primary" form="drinkForm">Mentés</button>
       </div>
     </div>

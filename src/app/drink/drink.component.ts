@@ -40,7 +40,7 @@ export class DrinkComponent {
     });
   }
 
-  close(){
+  reset(){
     this.drinkForm.reset();
   }
 
@@ -50,7 +50,7 @@ export class DrinkComponent {
       next: (result: any)=>{
         if(result.success){
           console.log(result);
-          this.drinkForm.reset();
+          this.reset()
           this.getDrinks();
         }else{
           console.log(result)
@@ -84,6 +84,17 @@ export class DrinkComponent {
       next: (result: any)=>{
         console.log(result.data)
         this.packages = result.data
+      }
+    })
+  }
+
+  edit(){}
+  update(){}
+  delete(id: number){
+    this.drinkApi.deleteDrink$(id).subscribe({
+      next:(result: any)=>{
+        console.log(result)
+        this.getDrinks()
       }
     })
   }
