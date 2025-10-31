@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class PackageapiService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getPackages$(){
+    const url = 'http://localhost:8000/api/packages';
+    return this.http.get(url);
+  }
 }

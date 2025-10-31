@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DrinkapiService } from '../shared/drinkapi.service';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { TypeapiService } from '../shared/typeapi.service';
+import { PackageapiService } from '../shared/packageapi.service';
 
 @Component({
   selector: 'app-drink',
@@ -15,17 +16,20 @@ export class DrinkComponent {
   drinkForm: any;
   drinks: any;
   types: any;
+  packages: any;
   addMode: boolean = true;
 
   constructor(
     private drinkApi: DrinkapiService,
     private typeApi: TypeapiService,
+    private packageApi: PackageapiService,
     private builder: FormBuilder
   ){}
 
   ngOnInit(){
     this.getDrinks();
     this.getTypes();
+    this.getPackages();
     this.drinkForm = this.builder.group({
       id: [''],
       drink: [''],
@@ -36,13 +40,22 @@ export class DrinkComponent {
     });
   }
 
+  close(){
+    this.drinkForm.reset();
+  }
+
   save(){
     console.log("Hozzáadás...")
     this.drinkApi.createDrink$(this.drinkForm.value).subscribe({
-      next: (result)=>{
-        console.log(result);
-        this.drinkForm.reset();
-        this.getDrinks();
+      next: (result: any)=>{
+        if(result.success){
+          console.log(result);
+          this.drinkForm.reset();
+          this.getDrinks();
+        }else{
+          console.log(result)
+        }
+        
       }
     })
   }
@@ -62,6 +75,15 @@ export class DrinkComponent {
       next:(result: any)=>{
         console.log(result.data)
         this.types = result.data
+      }
+    })
+  }
+
+  getPackages(){
+    this.packageApi.getPackages$().subscribe({
+      next: (result: any)=>{
+        console.log(result.data)
+        this.packages = result.data
       }
     })
   }

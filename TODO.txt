@@ -1,5 +1,3 @@
-TODO: típusokhoz Read művelet szolgáltatást
-TODO: csomagokhoz Read művelet szolgáltatást
 TODO: A drink komponesben a típus legördülő listabozól
 TODO. A drink komponensben a csomag legördülő listabozól
 

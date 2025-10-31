@@ -84,15 +84,24 @@
                 </select>
             </div>
 
-
-            <div class="input mb-3">
+            <!-- <div class="input mb-3">
                 <label for="package" class="form-label">Csomagolás</label>
                 <input type="text" formControlName="package" id="package" class="form-control">
+            </div> -->
+
+            <div class="input">
+                <label for="package" class="form-label">Csomagolás</label>
+                <select id="package" formControlName="package" class="form-select">
+                    @for (package of packages; track package.id) {
+                        <option>{{package.package}}</option>
+                    }
+                </select>
             </div>
+
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezárás</button>
+        <button (click)="close()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezárás</button>
         <button type="submit" class="btn btn-primary" form="drinkForm">Mentés</button>
       </div>
     </div>
