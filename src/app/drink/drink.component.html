@@ -68,10 +68,23 @@
                 <label for="price" class="form-label">Ár</label>
                 <input type="text" formControlName="price" id="price" class="form-control">
             </div>
-            <div class="input mb-3">
+
+
+
+            <!-- <div class="input mb-3">
                 <label for="type" class="form-label">Típus</label>
                 <input type="text" formControlName="type" id="type" class="form-control">
+            </div> -->
+            <div class="input">
+                <label for="type" class="form-label">Típus</label>
+                <select id="type" formControlName="type" class="form-select">
+                    @for (type of types; track type.id) {
+                        <option>{{type.type}}</option>
+                    }
+                </select>
             </div>
+
+
             <div class="input mb-3">
                 <label for="package" class="form-label">Csomagolás</label>
                 <input type="text" formControlName="package" id="package" class="form-control">

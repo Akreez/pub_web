@@ -10,10 +10,10 @@ export class DrinkapiService {
 
   getDrinks$(){
     const url = 'http://localhost:8000/api/drinks';
-    return this.http.get(url)
+    return this.http.get(url);
   }
   createDrink$(drink: any){
     const url = 'http://localhost:8000/api/newdrink';
-    return this.http.post(url, drink)
+    return this.http.post(url, drink);
   }
 }
