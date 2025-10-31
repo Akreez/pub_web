@@ -27,7 +27,7 @@
                 <td>{{drink.type}}</td>
                 <td>{{drink.package}}</td>
                 <td>
-                    <button class="btn btn-secondary me-2 mb-2 mt-2">Módosítás</button>
+                    <button (click)="edit(drink)" class="btn btn-secondary me-2 mb-2 mt-2" data-bs-toggle="modal" data-bs-target="#operationModal">Módosítás</button>
                     <button (click)="delete(drink.id)" class="btn btn-danger mb-2 mt-2">X</button>
                 </td>
             </tr>
@@ -36,7 +36,7 @@
 </table>
 
 <!-- Modal -->
-<div class="modal fade" id="operationModal" tabindex="-1" aria-labelledby="operationModalLabel" aria-hidden="true">
+<div class="modal fade" id="operationModal" tabindex="-1" aria-labelledby="operationModalLabel" aria-hidden="true" data-bs-backdrop="static">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -47,7 +47,7 @@
                 Módosítás
             }
         </h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button (click)="updateDrink()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="drinkForm" (ngSubmit)="save()" id="drinkForm">
@@ -83,6 +83,7 @@
             <div class="input">
                 <label for="type" class="form-label">Típus</label>
                 <select id="type" formControlName="type" class="form-select">
+                    <option></option>
                     @for (type of types; track type.id) {
                         <option>{{type.type}}</option>
                     }
@@ -97,6 +98,7 @@
             <div class="input">
                 <label for="package" class="form-label">Csomagolás</label>
                 <select id="package" formControlName="package" class="form-select">
+                    <option></option>
                     @for (package of packages; track package.id) {
                         <option>{{package.package}}</option>
                     }
@@ -106,7 +108,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button (click)="reset()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezárás</button>
+        <button (click)="updateDrink()" type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Bezárás</button>
         <button type="submit" class="btn btn-primary" form="drinkForm">Mentés</button>
       </div>
     </div>

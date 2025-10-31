@@ -1,8 +1,5 @@
-TODO: A drink komponesben a típus legördülő listabozól
-TODO. A drink komponensben a csomag legördülő listabozól
+TODO: Update művelet a /api/updatedrink végponttal nincs befejezve
 
-TODO: Update művelet a /api/updatedrink végponttal
-TODO: Delete művelet a /api/deletedrink végponttal
 
 TODO: típus komponens
 TODO: typus CRUD műveletek
